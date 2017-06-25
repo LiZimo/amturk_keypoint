@@ -92,6 +92,9 @@ canvas {
     display: inline-block;
 }
 
+.test-container {
+    background-color: blue;
+}
 
 .clearBtn {
     background-color: #2b6dd8;
