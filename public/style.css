@@ -44,24 +44,24 @@ h1 {
 }
 
 .canvasContainer {
-  position: relative;
+	position: relative;
 	display: inline-block;    
 	margin-top: 50px;
-  width: 350px;
-    
+	width: 350px;
+		
 	/*********DEVELOPMENT BACKGROUND***************/
 	background-color: #95c4e2;
 }   
 
 .canvasOverlay {
-  position:absolute;
-  top: 0;
-  left: 0;
+	position:absolute;
+	top: 0;
+	left: 0;
 }
 
 canvas {
 	border: 1px solid black;
-  display: inline-block;
+	display: inline-block;
 }
 
 /****these are the elements related to the user's inputs****/
@@ -70,7 +70,7 @@ form {
 	margin-bottom: 100px;
 	margin-left: 100px;
 
-  text-align: left;
+	text-align: left;
 }
 
 input {
@@ -78,59 +78,59 @@ input {
 }
 
 .clearBtn {
-  display: block;
+	display: block;
 	height: 30px;
 	
 	margin-top: 10px;
-  padding-right: 10px;
-  padding-left: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
  
-  cursor: pointer;
-  outline: 0;
-  border: none;
-
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1.2px;
-}
-
-.clearBtn:hover {
-  background-color: #598ee5;
-}
-
-.clearBtn:active {
-  background-color: #30589b;
-}
-
-p {
-  display: block;
-}
-
-#submit {    
-  display: block;
-  border: none;
-
-  margin-top: 10px;
-  height: 30px;
-  padding-right: 10px;
-  padding-left: 10px;
-  
-  cursor: pointer;
-  outline: 0;
+	cursor: pointer;
+	outline: 0;
+	border: none;
 
 	color: #fff;
 	font-size: 12px;
- 	font-weight: 600;
+	font-weight: 600;
+	letter-spacing: 1.2px;
+}
+
+.clearBtn:hover {
+	background-color: #598ee5;
+}
+
+.clearBtn:active {
+	background-color: #30589b;
+}
+
+p {
+	display: block;
+}
+
+#submit {    
+	display: block;
+	border: none;
+
+	margin-top: 10px;
+	height: 30px;
+	padding-right: 10px;
+	padding-left: 10px;
+	
+	cursor: pointer;
+	outline: 0;
+
+	color: #fff;
+	font-size: 12px;
+	font-weight: 600;
 	letter-spacing: 1.2px;
 }
 
 #submit:hover {
-  background-color: #598ee5;
+	background-color: #598ee5;
 }
 
 #submit:active {
-  background-color: #30589b;
+	background-color: #30589b;
 }
 
 /****************** OLD CODE ****************/
@@ -142,14 +142,14 @@ p {
 		
 /*
 		#container1{ position: relative;}
-  	#canvas1 { position: relative; top: 0; left: 0;}
-  	#canvas2 { position: absolute; top: 0; left: 0;}
-    	
-  	#container2{ position: absolute; }
+		#canvas1 { position: relative; top: 0; left: 0;}
+		#canvas2 { position: absolute; top: 0; left: 0;}
+			
+		#container2{ position: absolute; }
 		#canvas3 { position: absolute; top: 0; left: 300; }
-  	#canvas4 { position: absolute; top: 0; left: 300; }
+		#canvas4 { position: absolute; top: 0; left: 300; }
 
-  	#container3{ position: relative; }
+		#container3{ position: relative; }
 		#canvas5 { position: relative; top: 0; left: 0; }
 		#canvas6 { position: absolute; top: 0; left: 0; }
 		
