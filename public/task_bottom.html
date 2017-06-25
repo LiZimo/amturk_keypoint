@@ -9,7 +9,7 @@ loaded easily and have some extra stuff throw in the middle.
 
 <form onsubmit='return check_submission_status(assignmentId)' class='part' name='mturk_form' method='POST' id='mturk_form' action='https://workersandbox.mturk.com/mturk/externalSubmit'>
   <input type='hidden' value='' name='assignmentId' id='assignmentId'/>
-  <p><textarea id="comments" name='comments' cols='80' rows='3'></textarea></p>
+  <p><textarea id="comments" name='comments' cols='80' rows='3' placeholder="comments"></textarea></p>
   <p><input type='submit' id='submit' value='Submit Results' onClick="submit_results()"/></p>
 </form>
 <script language='Javascript'>turkSetAssignmentID(assignmentId);</script>

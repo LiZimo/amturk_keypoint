@@ -1,36 +1,155 @@
-		/*h1 { 
-            white-space: nowrap; 
-        }*/
-        h1 {
-            text-align: center;
-            margin-right: 100px;
-            margin-left: 100px;
-            margin-top: 50px;
-            font-family: arial;
-            letter-spacing: 1.1px;
-            font-weight: 200;
-            line-height: 45px;
-        }
-		canvas {
-			border: 1px solid black;
-		}
+/****************** MARY'S CHANGES ************************/
 
-		body {
-			margin: 0;
-		}
+/*
+	I organized the css styling according to their functionality on the page:
+	the instructions, the placement of the canvases and images, and the buttons / user interaction.
+
+	I kept the original in-line styling at the bottom of this sheet for reference.
+
+	I have background colors that are useful for seeing divs and containers.  You can find and turn these off by searching for "DEVELOPMENT BACKGROUND" and commenting out that code.
+
+	Ultimately, this is the reasoning for how we centered, aligned, distributed the containers.  Because we did not know the width of all the incoming images (and we assumed that they might not neccesarily all have the same width), we favored a left justified spacing.
+
+*/
+
+/***these are CSS that affect the entire page, such as background color and font****/
+body {
+	/********** DEVELOPMENT BACKGROUND ****************/
+	background-color: #f4fff5;
+	margin: 0;
+	font-family: "Roboto";
+}
+
+/****** related to the title of the page ******/
+h1 {
+	text-align: center;
+	
+	margin-right: 100px;
+	margin-left: 100px;
+	margin-top: 50px;
+
+	letter-spacing: 1.1px;
+	color: #303030;
+	font-weight: 200;
+	line-height: 45px;
+}
+
+/******** section that holds all of the pictures and their clear button *********/
+.pictureSection {
+	margin-left: 100px;
+	margin-right: 100px; 
+
+	/*********DEVELOPMENT BACKGROUND***************/
+	background-color: pink;
+}
+
+.canvasContainer {
+  position: relative;
+	display: inline-block;    
+	margin-top: 50px;
+  width: 350px;
+    
+	/*********DEVELOPMENT BACKGROUND***************/
+	background-color: #95c4e2;
+}
+
+.canvasOverlay {
+  position:absolute;
+  top: 0;
+	left: 0;
+}
+
+canvas {
+	border: 1px solid black;
+  display: inline-block;
+}
+
+/****these are the elements related to the user's inputs****/
+form {
+	margin-top: 75px;
+	margin-bottom: 100px;
+	margin-left: 100px;
+
+  text-align: left;
+}
+
+input {
+	background-color: #2b6dd8;
+}
+
+.clearBtn {
+  display: block;
+	height: 30px;
+	
+	margin-top: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+ 
+  cursor: pointer;
+  outline: 0;
+  border: none;
+
+	color: #fff;
+	font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+}
+
+.clearBtn:hover {
+  background-color: #598ee5;
+}
+
+.clearBtn:active {
+  background-color: #30589b;
+}
+
+p {
+  display: block;
+}
+
+#submit {    
+  display: block;
+  border: none;
+
+	margin-top: 10px;
+  height: 30px;
+  padding-right: 10px;
+  padding-left: 10px;
+  
+  cursor: pointer;
+  outline: 0;
+
+	color: #fff;
+	font-size: 12px;
+ 	font-weight: 600;
+	letter-spacing: 1.2px;
+}
+
+#submit:hover {
+  background-color: #598ee5;
+}
+
+#submit:active {
+  background-color: #30589b;
+}
+
+/****************** OLD CODE ****************/
+	/*this is your original inline styling*/
+	
 /*
 		Each container contains 2 canvases, one on top of the other.  one canvas is used to 
 		display an image, the other canvas is used to draw indications*/
 		
-/*		#container1{ position: relative;}
-    	#canvas1 { position: relative; top: 0; left: 0;}
-    	#canvas2 { position: absolute; top: 0; left: 0;}
+/*
+		#container1{ position: relative;}
+  	#canvas1 { position: relative; top: 0; left: 0;}
+  	#canvas2 { position: absolute; top: 0; left: 0;}
     	
-    	#container2{ position: absolute; }
+  	#container2{ position: absolute; }
 		#canvas3 { position: absolute; top: 0; left: 300; }
-    	#canvas4 { position: absolute; top: 0; left: 300; }
+  	#canvas4 { position: absolute; top: 0; left: 300; }
 
-    	#container3{ position: relative; }
+  	#container3{ position: relative; }
 		#canvas5 { position: relative; top: 0; left: 0; }
 		#canvas6 { position: absolute; top: 0; left: 0; }
 		
@@ -68,64 +187,3 @@
 		#clear10 {top:370px; left:920px;}
 		#clear12 {top:370px; left:1150px;};*/
 /*
-    	//========================================================
-*/
-.pictureSection {
-    margin-right: 50px;
-    margin-left: 50px;
-}
-.canvasContainer {
-    display: flex;
-    flex-direction: row;
-    position: relative;
-    width: 350px;
-    display: inline-block;
-    margin-top: 50px;
-    /*background-color: greenyellow;*/
-}
-.canvasOverlay {
-    position:absolute;
-    top: 0;
-    left: 0;
-}
-canvas {
-    display: inline-block;
-}
-
-.test-container {
-    background-color: blue;
-}
-
-.clearBtn {
-    background-color: #2b6dd8;
-    color: #fff;
-    display: block;
-    border: none;
-    height: 30px;
-    /*padding: 10px;*/
-    padding-right: 10px;
-    padding-left: 10px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 1.2px;
-    margin-top: 10px;
-    cursor: pointer;
-    outline: 0;
-}
-
-.clearBtn:hover {
-    background-color: #598ee5;
-}
-.clearBtn:active {
-    background-color: #30589b;
-}
-form {
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 75px;
-    margin-bottom: 100px;
-    text-align: center;
-}
-p {
-    display: inline;
-}

@@ -7,11 +7,53 @@ loaded easily and have some extra stuff throw in the middle.   -->
 	<meta charset="UTF-8">
 	<title>Choose Keypoints</title>
 	<h1>Please click the contact points for hands during the riding action on the bicycle.  Right Click to Clear Points.</h1>
-	<link rel="stylesheet" href="style.css" />
-
-	
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" href="style.css" />	
 </head>
 <body>
+
+<!--/****************** MARY'S CODE ****************/-->
+
+	<div class="pictureSection">
+  	<div class=canvasContainer>
+    	<canvas class="part" id="canvas1"></canvas>
+    	<canvas class="part canvasOverlay" id="canvas2"></canvas>
+  		<input type="button" class="part clearBtn" value="clear" id="clear2" onClick='clear_points(canvas2)'></input>
+  	</div>
+
+  	<div class=canvasContainer>
+    	<canvas class="part" id="canvas3"></canvas>
+    	<canvas class="part canvasOverlay" id="canvas4"></canvas>
+  		<input type="button" class="part clearBtn" value="clear" id="clear4" onClick='clear_points(canvas4)'></input>
+  	</div>
+   
+  	<div class=canvasContainer> 
+  		<canvas class="part" id="canvas5"></canvas>
+  		<canvas class="part canvasOverlay" id="canvas6"></canvas>
+  		<input type="button" class="part clearBtn" value="clear" id="clear6" onClick='clear_points(canvas6)'></input>
+  	</div>
+  	
+    <div class=canvasContainer> 
+  		<canvas class="part" id="canvas7"></canvas>
+  		<canvas class="part canvasOverlay" id="canvas8"></canvas>
+  		<input type="button" class="part clearBtn" value="clear" id="clear8" onClick='clear_points(canvas8)'></input>
+    </div>
+
+    <div class=canvasContainer> 
+      <canvas class="part" id="canvas9"></canvas>
+      <canvas class="part canvasOverlay" id="canvas10"></canvas>
+      <input type="button" class="part clearBtn" value="clear" id="clear10" onClick='clear_points(canvas10)'></input>
+    </div>
+
+    <div class=canvasContainer> 
+  		<canvas class="part" id="canvas11"></canvas>
+  		<canvas class="part canvasOverlay" id="canvas12"></canvas>
+  		<input type="button" class="part clearBtn" value="clear" id="clear12" onClick='clear_points(canvas12)'></input>
+  	</div>
+  </div>
+
+<!--/****************** OLD CODE ****************/-->
+
 <!-- 	Here are the containers and the canvases underneath -->
 	<!-- <div id="container1">
     <canvas class="canvas" id="canvas1"></canvas>
@@ -61,49 +103,5 @@ loaded easily and have some extra stuff throw in the middle.   -->
 	<canvas class="part" id="canvas10"></canvas>
 	
 	<canvas class="part" id="canvas11"></canvas>
-<<<<<<< HEAD
-<<<<<<< HEAD
 	<canvas class="part" id="canvas12"></canvas><input type="button" class="part" value="clear" id="clear12" onClick='clear_points(canvas12)'></input>
 	</div>-->
-
-<!--############################################ -->
-	<div class="pictureSection">
-    <div class='test-container'>
-    	<div class=canvasContainer>
-        <canvas class="part" id="canvas1"></canvas>
-        <canvas class="part canvasOverlay" id="canvas2"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear2" onClick='clear_points(canvas2)'></input>
-    	</div>
-
-    	<div class=canvasContainer>
-        <canvas class="part" id="canvas3"></canvas>
-        <canvas class="part canvasOverlay" id="canvas4"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear4" onClick='clear_points(canvas4)'></input>
-    	</div>
-     
-    	<div class=canvasContainer> 
-    	<canvas class="part" id="canvas5"></canvas>
-    	<canvas class="part canvasOverlay" id="canvas6"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear6" onClick='clear_points(canvas6)'></input>
-    	</div>
-    	
-        <div class=canvasContainer> 
-    	<canvas class="part" id="canvas7"></canvas>
-    	<canvas class="part canvasOverlay" id="canvas8"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear8" onClick='clear_points(canvas8)'></input>
-        </div>
-
-        <div class=canvasContainer> 
-        <canvas class="part" id="canvas9"></canvas>
-    	<canvas class="part canvasOverlay" id="canvas10"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear10" onClick='clear_points(canvas10)'></input>
-        </div>
-
-        <div class=canvasContainer> 
-    	<canvas class="part" id="canvas11"></canvas>
-    	<canvas class="part canvasOverlay" id="canvas12"></canvas>
-    	<input type="button" class="part clearBtn" value="clear" id="clear12" onClick='clear_points(canvas12)'></input>
-    <div class='test-container'>
-	</div>
-    
-    </div>
