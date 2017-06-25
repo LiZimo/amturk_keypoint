@@ -31,15 +31,12 @@ app.use(bodyParser.json());
 //========================================================
 // Https key and certificate.  Necessary to host https server.
 //========================================================
+var privateKey  = fs.readFileSync('ssl_cert_real/myserver.key', 'utf8');
+var certificate = fs.readFileSync('ssl_cert_real/cert.crt', 'utf8');
+var credentials = {key: privateKey, cert: certificate};
 
-// Chris D
-// var privateKey  = fs.readFileSync('sslcert/myserver.key', 'utf8');
-// var certificate = fs.readFileSync('sslcert/server.csr', 'utf8');
-// var credentials = {key: privateKey, cert: certificate};
+var httpsServer = https.createServer(credentials, app);
 
-// var httpsServer = https.createServer(credentials, app);
-
-var httpServer = http.createServer(app);
 //========================================================
 function display_request_name(request_name, silent)
 // logs serverside 'request_name' on console silent==false.  Debugging tool.
@@ -50,7 +47,7 @@ function display_request_name(request_name, silent)
 
 }
 //========================================================
-var silent = false; // if this is false, then the server will log each request on the console as that request is made.
+var silent = true; // if this is false, then the server will log each request on the console as that request is made.
 //========================================================
 
 
@@ -222,10 +219,6 @@ app.post('/submit',function(req,res){
 	});
 });
 //========================================================
-// Chris Work
-// httpsServer.listen(8443);
-// console.log('https server running at on port 8443');
-
-httpServer.listen(8000);
-console.log('https server running at on port 8000');
+httpsServer.listen(8443);
+console.log('https server running at on port 8443');
 //========================================================
