@@ -36,8 +36,8 @@ h1 {
 
 /******** section that holds all of the pictures and their clear button *********/
 .pictureSection {
-	margin-left: 100px;
-	margin-right: 100px; 
+	margin-left: 10px;
+	margin-right: 10px; 
 
 	/*********DEVELOPMENT BACKGROUND***************/
 	background-color: pink;
@@ -46,8 +46,8 @@ h1 {
 .canvasContainer {
 	position: relative;
 	display: inline-block;    
-	margin-top: 50px;
-	width: 350px;
+	margin-top: 10px;
+	width: 220px;
 		
 	/*********DEVELOPMENT BACKGROUND***************/
 	background-color: #95c4e2;
