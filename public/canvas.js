@@ -169,9 +169,13 @@ function canvas_draw(e) {
   display_func_name(myName, silent, log);
 	// Draws a black rectangle on the canvas
 
-	c = this.getContext('2d')
+	c = this.getContext('2d');
+  parent_div = this.parentNode;
+  //console.log(parent_div);
+
+  checkbox = parent_div.getElementsByClassName('part check_box')[0];
 	   
-  if (this.coords.length < total_allowed_points) {
+  if (this.coords.length < total_allowed_points && !checkbox.checked) {
     var pos = getMousePos(this, e);
     posx = pos.x;
     posy = pos.y;
@@ -181,11 +185,15 @@ function canvas_draw(e) {
     c.beginPath();
     c.arc(posx, posy, 5, 0, 2 * Math.PI);
     c.fill();
+    checkbox.disabled = true;
 
     //c.fillRect(posx-rsize/2, posy-rsize/2, rsize, rsize);
   }
 
-  else {alert('Only '+total_allowed_points.toString()+' points allowed.')}
+  else if (this.coords.length > total_allowed_points)
+   {alert('Only '+total_allowed_points.toString()+' points allowed.')}
+
+  else if (checkbox.checked) {alert('You can\'t choose points if you mark the entry as \'Bad Image \' ')};
 
     turkSetAssignmentID(assignmentId);
 }
@@ -194,7 +202,10 @@ function canvas_draw(e) {
 //========================================================
 function clear(e) {
   e.preventDefault();
-  c = this.getContext('2d')
+  c = this.getContext('2d');
+  parent_div = this.parentNode;
+  checkbox = parent_div.getElementsByClassName('part check_box')[0];
+  checkbox.disabled = false;
   c.clearRect(0, 0, this.width, this.height);
   this.coords = [];
 
@@ -237,24 +248,26 @@ $(document).ready(function(){
     $("#submit").click(function(){ //submit function is based on click
       var empty_field= false;
       var which_fields_empty = new Array();
+      var which_imgs_bad = new Array();
       var submit_dict = new Array();
       var comments=$("#comments").val();
       for (i=0; i <imgs.length; i++) {
       	submit_dict[i]=(canvas_tops[i].coords); //submit_dict has the corresponding points clicked on each image
-
+        console.log(checkboxes[i]);
         if (canvas_tops[i].coords[0] == null) {
 
           if (checkboxes[i].checked == false) {
 
           empty_field = true;
           which_fields_empty.push(i); 
+          which_imgs_bad.push(i);
         }
         }
       }
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string
       if (!empty_field) { // only post the result if user clicked on all images
 
-     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId};
+     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad};
      ajax_post('/submit', mydata);
     }
     else { // alert user if he did not click on all images
@@ -324,6 +337,9 @@ function clear_points(canvas) {
   var c = canvas.getContext('2d')
   c.clearRect(0, 0, canvas.width, canvas.height);
   canvas.coords = [];
+  parent_div = canvas.parentNode;
+  checkbox = parent_div.getElementsByClassName('part check_box')[0];
+  checkbox.disabled = false;
 
   turkSetAssignmentID(assignmentId);
 
