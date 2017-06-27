@@ -193,7 +193,7 @@ function canvas_draw(e) {
   else if (this.coords.length > total_allowed_points)
    {alert('Only '+total_allowed_points.toString()+' points allowed.')}
 
-  else if (checkbox.checked) {alert('You can\'t choose points if you mark the entry as \'Bad Image \' ')};
+  else if (checkbox.checked) {alert('You can\'t choose points if you mark the entry as \'Cannot Complete \' ')};
 
     turkSetAssignmentID(assignmentId);
 }
