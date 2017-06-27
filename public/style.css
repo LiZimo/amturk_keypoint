@@ -95,6 +95,14 @@ input {
 	letter-spacing: 1.2px;
 }
 
+.check_box {
+	margin-top: 0px;
+	padding-right: 10px;
+	padding-left: 10px;
+	height: 20px;
+
+}
+
 .clearBtn:hover {
 	background-color: #598ee5;
 }

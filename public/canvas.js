@@ -29,6 +29,32 @@ var canvas9 = document.getElementById('canvas9');
 var canvas10 = document.getElementById('canvas10');
 var canvas11 = document.getElementById('canvas11');
 var canvas12 = document.getElementById('canvas12');
+var canvas13= document.getElementById('canvas13');
+var canvas14= document.getElementById('canvas14');
+var canvas15= document.getElementById('canvas15');
+var canvas16= document.getElementById('canvas16');
+var canvas17= document.getElementById('canvas17');
+var canvas18= document.getElementById('canvas18');
+var canvas19= document.getElementById('canvas19');
+var canvas20= document.getElementById('canvas20');
+var canvas21= document.getElementById('canvas21');
+var canvas22 = document.getElementById('canvas22');
+var canvas23 = document.getElementById('canvas23');
+var canvas24 = document.getElementById('canvas24');
+
+
+var check2 = document.getElementById('check2');
+var check4 = document.getElementById('check4');
+var check6 = document.getElementById('check6');
+var check8 = document.getElementById('check8');
+var check10 = document.getElementById('check10');
+var check12 = document.getElementById('check12');
+var check14 = document.getElementById('check14');
+var check16 = document.getElementById('check16');
+var check18 = document.getElementById('check18');
+var check20 = document.getElementById('check20');
+var check22 = document.getElementById('check22');
+var check24 = document.getElementById('check24');
 
 var csize = 200;
 var maxheight = 300;
@@ -48,6 +74,7 @@ var c4 = canvas4.getContext('2d');
 // the <imgs> array is generated from the server dynamically.  
 // Please refer to the file server.js
 //========================================================
+var checkboxes = [check2, check4, check6, check8, check10, check12, check14, check16, check18, check20, check22, check24];
 var canvases = [canvas1, canvas3, canvas5, canvas7, canvas9, canvas11, canvas13, canvas15, canvas17, canvas19, canvas21, canvas23];
 var canvas_tops = [canvas2, canvas4, canvas6, canvas8, canvas10, canvas12, canvas14, canvas16, canvas18, canvas20, canvas22, canvas24];
 var all_canvases = [canvas1, canvas2, canvas3, canvas4, canvas5, canvas6, canvas7, canvas8, canvas9, canvas10, canvas11, canvas12, canvas13, canvas14, canvas15, canvas16, canvas17, canvas18, canvas19, canvas20, canvas21, canvas22, canvas23, canvas24];
@@ -56,11 +83,18 @@ make_bases(imgs, canvases, canvas_tops, 0, make_bases); // draws img[i] on canva
 instantiate_coords(canvas_tops);
 //========================================================
 
+function seeif_checked(checkbox) {
+
+  if (checkbox.checked) {
+    return true;
+  }
+  else {return false;}
+}
+
 function instantiate_coords(mycanvases) {
 
   for (i = 0; i < mycanvases.length; i++) {
     mycanvases[i].coords = new Array();
-    console.log(mycanvases);
   }
 }
 
@@ -207,10 +241,14 @@ $(document).ready(function(){
       var comments=$("#comments").val();
       for (i=0; i <imgs.length; i++) {
       	submit_dict[i]=(canvas_tops[i].coords); //submit_dict has the corresponding points clicked on each image
-        console.log(canvas_tops[i].coords[0]);
+
         if (canvas_tops[i].coords[0] == null) {
+
+          if (checkboxes[i].checked == false) {
+
           empty_field = true;
-          which_fields_empty.push(i);
+          which_fields_empty.push(i); 
+        }
         }
       }
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string

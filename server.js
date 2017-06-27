@@ -93,35 +93,24 @@ var silent = true; // if this is false, then the server will log each request on
 // due to asynchronous acess.  
 //========================================================
 
-var task_counter = {};
-var files = fs.readdirSync(__dirname +"/imglists/");
-for (i=0; i<files.length; i++) {
-	task_counter[files[i]] = 0;
-};
-var num_repeat_task = 3;
 
 app.get('/begin',function(req, res) {
 
 	var assignmentId = req.query.assignmentId;
-	console.log(assignmentId);
 
+	var task_num = req.query.task_num;
+
+	if (task_num == null) {task_num = 1;}
 	myurl = (req.originalUrl);
 	display_request_name(myurl, silent);
-	var files = fs.readdirSync(__dirname +"/imglists/");
 
-	for (i=0; i<files.length; i++) {
-		if (task_counter[files[i]] <= num_repeat_task) {
-			task_counter[files[i]]+=1;
-			res.redirect(url.format({ 
+				res.redirect(url.format({ 
        				pathname:"/imglists",
        			query: {
           			"assignmentId": assignmentId,
-           			"num": i.toString(),
+           			"num": task_num.toString(),
         				}
      			}));
-			break;
-		}
-	}
 
 });
 //========================================================
@@ -138,13 +127,15 @@ app.get('/imglists',function(req, res) {
 	display_request_name(myurl, silent);
 
 
-	var files = fs.readdirSync(__dirname +"/imglists/");
+	var files = fs.readdirSync(__dirname +"/imglists/bike_tasks/");
 	var task_num = Number(req.query.num); //task num got from url
-	var text = fs.readFileSync(__dirname + '/imglists/' + files[task_num],'utf8'); // get the .txt file that corresponds to task_num
-	var imgs = text.split('\r\n');
+	var text = fs.readFileSync(__dirname + '/imglists/bike_tasks/' + files[task_num],'utf8'); // get the .txt file that corresponds to task_num
+	var imgs = text.split('\n');
 
 	for (i = 0; i < imgs.length; i++) { // add the imgs to an array
 		imgs[i] =  '/images/' + imgs[i] ;
+		// console.log(i);
+		// console.log(imgs[i]);
 	    imgs[i] = '\'' + imgs[i] + '\'';
 	}
 
@@ -188,7 +179,7 @@ app.get('/task',function(req, res) {
     var bottom = fs.readFileSync(__dirname +"/public/task_bottom.html", 'utf8');
 
     html = top + middle_img + middle_task + middle_assignment_id + bottom;
-    console.log(middle_assignment_id);
+    //console.log(middle_assignment_id);
 	res.send(html);
 });
 //========================================================
