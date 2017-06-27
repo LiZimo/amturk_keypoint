@@ -48,9 +48,9 @@ var c4 = canvas4.getContext('2d');
 // the <imgs> array is generated from the server dynamically.  
 // Please refer to the file server.js
 //========================================================
-var canvases = [canvas1, canvas3, canvas5, canvas7, canvas9, canvas11];
-var canvas_tops = [canvas2, canvas4, canvas6, canvas8, canvas10, canvas12];
-var all_canvases = [canvas1, canvas2, canvas3, canvas4, canvas5, canvas6, canvas7, canvas8, canvas9, canvas10, canvas11, canvas12];
+var canvases = [canvas1, canvas3, canvas5, canvas7, canvas9, canvas11, canvas13, canvas15, canvas17, canvas19, canvas21, canvas23];
+var canvas_tops = [canvas2, canvas4, canvas6, canvas8, canvas10, canvas12, canvas14, canvas16, canvas18, canvas20, canvas22, canvas24];
+var all_canvases = [canvas1, canvas2, canvas3, canvas4, canvas5, canvas6, canvas7, canvas8, canvas9, canvas10, canvas11, canvas12, canvas13, canvas14, canvas15, canvas16, canvas17, canvas18, canvas19, canvas20, canvas21, canvas22, canvas23, canvas24];
 //set_canvas_sizes(all_canvases, csize, csize);
 make_bases(imgs, canvases, canvas_tops, 0, make_bases); // draws img[i] on canvases[i]
 instantiate_coords(canvas_tops);
@@ -60,6 +60,7 @@ function instantiate_coords(mycanvases) {
 
   for (i = 0; i < mycanvases.length; i++) {
     mycanvases[i].coords = new Array();
+    console.log(mycanvases);
   }
 }
 
