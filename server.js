@@ -194,21 +194,39 @@ app.post('/submit',function(req,res){
   display_request_name(myurl, silent);
   
   var coords = req.body.coords;
+
+  var coord_array = JSON.parse(coords);
+  //console.log(coord_array);
+
+
+  var final_coord_str = '';
+  for (i=0; i < coord_array.length; i++) {
+  	coords_i = coord_array[i];
+  	for (j = 0; j < coords_i.length; j++) {
+  		final_coord_str += coords_i[j][0].toString() + ' ';
+  		final_coord_str += coords_i[j][1].toString() + ' ';
+  	}
+  	final_coord_str += '\n';
+  }
+
+  //console.log(final_coord_str);
+
   var comments = req.body.comments;
   var task_num = req.body.task_num;
   var assignmentId = req.body.assignmentId;
   var which_imgs_bad = req.body.which_imgs_bad;
-  out_str ='task_num: ' + task_num + ' Coordinates: ' +coords + ' Comments:'+comments + 'Bad_imgs:'+which_imgs_bad; // final user submitted coordinates 
-  export_command = '(echo '+out_str+') > output/'+assignmentId+'_'+'task_'+task_num+'.txt'; // writes the coordinates into a txt file, the file name is the username and txt number
-  //console.log(export_command);
 
-  exec(export_command, function(err, stdout, stderr){ // exec library lets the server execute the command.  It is saved in the /output directory
-	  if (err) {
-	    console.error(err);
-	    return;
-	  }
-	  console.log(stdout);
-	});
+  filename = 'output/'+assignmentId+'_'+'task_'+task_num+'.json'
+
+   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad)};
+   var json_str= JSON.stringify(myjson);
+   var fs = require('fs');
+	fs.writeFile(filename, json_str, function(err) {
+    if(err) {
+        return console.log(err);
+    }
+});
+
 });
 //========================================================
 httpsServer.listen(8443);

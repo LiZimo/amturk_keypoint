@@ -249,24 +249,36 @@ $(document).ready(function(){
       var empty_field= false;
       var which_fields_empty = new Array();
       var which_imgs_bad = new Array();
+
       var submit_dict = new Array();
       var comments=$("#comments").val();
       for (i=0; i <imgs.length; i++) {
       	submit_dict[i]=(canvas_tops[i].coords); //submit_dict has the corresponding points clicked on each image
-        console.log(checkboxes[i]);
+        //console.log(checkboxes[i]);
         if (canvas_tops[i].coords[0] == null) {
 
           if (checkboxes[i].checked == false) {
 
           empty_field = true;
           which_fields_empty.push(i); 
-          which_imgs_bad.push(i);
+          //which_imgs_bad.push(i);
         }
         }
       }
+
+      for (i=0; i <imgs.length; i++) {
+        if (checkboxes[i].checked == true) {
+          which_imgs_bad.push(i);
+        }
+      }
+
+
+      //console.log(which_imgs_bad);
+
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string
       if (!empty_field) { // only post the result if user clicked on all images
 
+      var which_imgs_bad = JSON.stringify(which_imgs_bad);
      var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad};
      ajax_post('/submit', mydata);
     }
@@ -289,8 +301,11 @@ function turkSetAssignmentID(assignmentId) {
   for (i=0; i <imgs.length; i++) {
 
         if (canvas_tops[i].coords[0] == null) {
+          if (checkboxes[i].checked == false) {
+
           empty_field = true;
           break;
+        }
         }
   }
 
@@ -305,7 +320,7 @@ function turkSetAssignmentID(assignmentId) {
 
   
   else if (empty_field) {
-    btn.value = "Please choose a keypoint for each image before submitting";
+    btn.value = "Please choose a keypoint or check cannot complete for each image before submitting";
     return false;
   }
 
