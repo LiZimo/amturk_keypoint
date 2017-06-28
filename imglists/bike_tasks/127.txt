@@ -1,0 +1,12 @@
+bikes_cropped/HICO_train2015_00029418.jpg
+bikes_cropped/HICO_train2015_00029426.jpg
+bikes_cropped/HICO_train2015_00029433.jpg
+bikes_cropped/HICO_train2015_00029447.jpg
+bikes_cropped/HICO_train2015_00029448.jpg
+bikes_cropped/HICO_train2015_00029496.jpg
+bikes_cropped/HICO_train2015_00029501.jpg
+bikes_cropped/HICO_train2015_00029561.jpg
+bikes_cropped/HICO_train2015_00029581.jpg
+bikes_cropped/HICO_train2015_00029615.jpg
+bikes_cropped/HICO_train2015_00029616.jpg
+bikes_cropped/HICO_train2015_00029626.jpg

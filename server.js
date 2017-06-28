@@ -129,7 +129,7 @@ app.get('/imglists',function(req, res) {
 
 	var files = fs.readdirSync(__dirname +"/imglists/bike_tasks/");
 	var task_num = Number(req.query.num); //task num got from url
-	var text = fs.readFileSync(__dirname + '/imglists/bike_tasks/' + files[task_num],'utf8'); // get the .txt file that corresponds to task_num
+	var text = fs.readFileSync(__dirname + '/imglists/bike_tasks/' + task_num +'.txt','utf8'); // get the .txt file that corresponds to task_num
 	var imgs = text.split('\n');
 
 	for (i = 0; i < imgs.length; i++) { // add the imgs to an array
