@@ -139,12 +139,26 @@ app.get('/imglists',function(req, res) {
 	    imgs[i] = '\'' + imgs[i] + '\'';
 	}
 
+	// get test files
+
+	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/testlist.txt", 'utf8');
+	var testims = test_files.split('\r\n');
+	// get random index for putting a test image
+	var rand_index = Math.floor(Math.random() * imgs.length);
+	var random_testim = Math.floor(Math.random() * testims.length);
+
+	imgs[rand_index] = '/images/test_ims/' + testims[random_testim].substring(0, testims[random_testim].length - 4) + '_goodmask_final.jpg';
+	imgs[rand_index] = '\'' + imgs[rand_index] + '\'';
+	//console.log(imgs);
+
 	res.redirect(url.format({ //send the imgs and task_num to the actual task page in the form of a query
        pathname:"/task",
        query: {
           "imgs": imgs.toString(),
           "task_num": req.query.num,
           "assignmentId":req.query.assignmentId,
+          "testim_fileid":random_testim,
+          "testim_index":rand_index,
         }
      }));
 });
@@ -171,14 +185,18 @@ app.get('/task',function(req, res) {
 	var imgs = req.query.imgs;
 	var task_num = req.query.task_num;
 	var assignmentId = req.query.assignmentId;
+	var testim_index = req.query.testim_index;
+	var testim_fileid = req.query.testim_fileid;
 
     var top = fs.readFileSync(__dirname +"/public/task_top.html", 'utf8');
     var middle_img = ' <script> var imgs = [' +imgs+']; </script>'; // add imgs array as variable dynamically
     var middle_task = '<script> var task_num = '+task_num+' </script>'; // add task_num array as variable dynamically
     var middle_assignment_id = '<script> var assignmentId = '+JSON.stringify(assignmentId)+' </script>';
+    var middle_testim_index = '<script> var testim_index = '+testim_index+' </script>';
+    var middle_testim_fileid = '<script> var testim_fileid = '+testim_fileid+' </script>';
     var bottom = fs.readFileSync(__dirname +"/public/task_bottom.html", 'utf8');
 
-    html = top + middle_img + middle_task + middle_assignment_id + bottom;
+    html = top + middle_img + middle_task + middle_assignment_id + middle_testim_fileid + middle_testim_index+ bottom;
     //console.log(middle_assignment_id);
 	res.send(html);
 });
@@ -215,10 +233,13 @@ app.post('/submit',function(req,res){
   var task_num = req.body.task_num;
   var assignmentId = req.body.assignmentId;
   var which_imgs_bad = req.body.which_imgs_bad;
+  var img_arr = req.body.imgs;
+  var testim_fileid = req.body.testim_fileid;
+  var testim_index = req.body.testim_index;
 
   filename = 'output/'+assignmentId+'_'+'task_'+task_num+'.json'
 
-   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad)};
+   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad), "imgs": JSON.parse(img_arr), "testim_fileid": Number(testim_fileid), "testim_index": Number(testim_index)};
    var json_str= JSON.stringify(myjson);
    var fs = require('fs');
 	fs.writeFile(filename, json_str, function(err) {

@@ -140,9 +140,6 @@ function make_bases(imgsrc, canvas_bottoms, canvas_tops, i, callback)
     im_height_str = (canvas_tops[i].height + 84).toString();
 
     document.getElementById("clear"+(i*2+2).toString()).style.top = im_height_str+'px';
-    //cur_top = "500px";
-    //alert("clear"+(i*2+2).toString());
-    //console.log(cur_top);
 
     c_bottom.drawImage(base_image, 0, 0, base_image.width, base_image.height, 0, 0, canvas_bottoms[i].width, canvas_bottoms[i].height);
 
@@ -261,7 +258,6 @@ $(document).ready(function(){
 
           empty_field = true;
           which_fields_empty.push(i); 
-          //which_imgs_bad.push(i);
         }
         }
       }
@@ -272,20 +268,32 @@ $(document).ready(function(){
         }
       }
 
-
-      //console.log(which_imgs_bad);
+      test_canvas = canvas_tops[testim_index];
+      var inside_mask = check_test_im(test_canvas, imageonload_func);
 
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string
-      if (!empty_field) { // only post the result if user clicked on all images
-
+    if (!empty_field && inside_mask) { // only post the result if user clicked on all images
+      button_name = 'submit';
+      btn.disabled = false;
+        
       var which_imgs_bad = JSON.stringify(which_imgs_bad);
-     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad};
+      var img_arr = JSON.stringify(imgs);
+
+     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad, imgs: img_arr, testim_fileid: testim_fileid, testim_index: testim_index};
      ajax_post('/submit', mydata);
     }
+    else if (!empty_field && !inside_mask) {
+      button_name = 'submit';
+      btn.disabled = true;
+      alert('You did not click on the correct contact points for a validation image.  Reminder: click on the object at all times, even if occluded.  See instructions');
+      //btn.disabled = false;
+    } 
+    
     else { // alert user if he did not click on all images
       var empty_images = JSON.stringify(which_fields_empty);
       alert('Images '+empty_images+' were not clicked on.  Please choose keypoints for these images and resubmit');
     }
+
     });
   });
 //========================================================
@@ -328,10 +336,7 @@ function turkSetAssignmentID(assignmentId) {
     btn.value = "Submit";
     btn.disabled = false; 
     return true;
-
   }
-
-
 }
 
 function add_events(mycanvases) {
@@ -358,6 +363,51 @@ function clear_points(canvas) {
 
   turkSetAssignmentID(assignmentId);
 
+}
+
+function check_test_im(test_im_canvas, callback) {
+
+  var test_coords = test_im_canvas.coords;
+  var test_im_name = imgs[testim_index];
+
+  var goodmask = test_im_name;
+  //var goodmask = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask_final.jpg';
+  //var badmask = test_im_name.substring(0, test_im_name.length - 4) + '_badmask_final.jpg';
+
+  image = new Image();
+  image.src = goodmask;
+
+  var canvas = document.createElement('canvas');
+  var context = canvas.getContext('2d');
+  canvas.width = csize;
+  canvas.height = image.height * (csize/image.width);
+
+    if (canvas.height > maxheight) {
+      canvas.height = maxheight;
+      canvas.width = image.width * (maxheight/image.height)
+    } 
+
+return callback(context, canvas, test_coords, image);
+
+}
+
+
+function imageonload_func(context, canvas, test_coords, image) {
+    context.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
+
+    var inside_mask = true;
+
+    for (var i = 0; i < test_coords.length; i ++) {
+    var pointx = test_coords[i][0];
+    var pointy = test_coords[i][1];
+    var theData = context.getImageData(pointx, pointy, 1, 1).data;
+
+      if (theData[0] == 0 && theData[1] == 0 && theData[2] == 0 ) {
+          inside_mask = false;
+        }
+
+      if (i == test_coords.length - 1) {return inside_mask;} 
+  }
 }
 
 add_events(canvas_tops);
