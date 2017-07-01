@@ -276,20 +276,20 @@ $(document).ready(function(){
       var outside_everything = mask_indicators[3];
 
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string
-      console.log('condtion');
-      console.log(!empty_field && inside_goodmask1 && inside_goodmask2 && outside_everything && !inside_badmask);
+      //console.log('condtion');
+      //console.log(!empty_field && inside_goodmask1 && inside_goodmask2 && outside_everything && !inside_badmask);
 
-    if (!empty_field && inside_goodmask1 && inside_goodmask2 && !inside_badmask) { // only post the result if user clicked on all images
+    if (!empty_field && inside_goodmask1 && inside_goodmask2 && !outside_everything) { // only post the result if user clicked on all images
         
       var which_imgs_bad = JSON.stringify(which_imgs_bad);
       var img_arr = JSON.stringify(imgs);
 
-     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad, imgs: img_arr, testim_fileid: testim_fileid, testim_index: testim_index};
+     var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad, imgs: img_arr, testim_fileid: testim_fileid, testim_index: testim_index, start_time:start_time};
      ajax_post('/submit', mydata);
 
 
     }
-    if (!empty_field && inside_goodmask1 && inside_goodmask2 && outside_everything && !inside_badmask) {
+    else if (!empty_field && inside_goodmask1 && inside_goodmask2 && outside_everything && !inside_badmask) {
       alert('Validation Image Error: You have chosen all the correct points, but you have also chosen some extraneous points on a validation image.  Please choose only correct points as per the Instructions.')
     }
 

@@ -100,6 +100,8 @@ app.get('/begin',function(req, res) {
 
 	var task_num = req.query.task_num;
 
+	var start_time = Math.floor(Date.now() / 1000);
+
 	if (task_num == null) {task_num = 1;}
 	myurl = (req.originalUrl);
 	display_request_name(myurl, silent);
@@ -109,6 +111,7 @@ app.get('/begin',function(req, res) {
        			query: {
           			"assignmentId": assignmentId,
            			"num": task_num.toString(),
+           			"start_time": start_time,
         				}
      			}));
 
@@ -131,6 +134,7 @@ app.get('/imglists',function(req, res) {
 	var task_num = Number(req.query.num); //task num got from url
 	var text = fs.readFileSync(__dirname + '/imglists/bike_tasks/' + task_num +'.txt','utf8'); // get the .txt file that corresponds to task_num
 	var imgs = text.split('\n');
+	var start_time = req.query.start_time;
 
 	for (i = 0; i < imgs.length; i++) { // add the imgs to an array
 		imgs[i] =  '/images/' + imgs[i] ;
@@ -160,6 +164,7 @@ app.get('/imglists',function(req, res) {
           "assignmentId":req.query.assignmentId,
           "testim_fileid":random_testim,
           "testim_index":rand_index,
+          "start_time": start_time,
         }
      }));
 });
@@ -188,6 +193,7 @@ app.get('/task',function(req, res) {
 	var assignmentId = req.query.assignmentId;
 	var testim_index = req.query.testim_index;
 	var testim_fileid = req.query.testim_fileid;
+	var start_time = req.query.start_time;
 
     var top = fs.readFileSync(__dirname +"/public/task_top.html", 'utf8');
     var middle_img = ' <script> var imgs = [' +imgs+']; </script>'; // add imgs array as variable dynamically
@@ -195,9 +201,10 @@ app.get('/task',function(req, res) {
     var middle_assignment_id = '<script> var assignmentId = '+JSON.stringify(assignmentId)+' </script>';
     var middle_testim_index = '<script> var testim_index = '+testim_index+' </script>';
     var middle_testim_fileid = '<script> var testim_fileid = '+testim_fileid+' </script>';
+    var middle_start_time = '<script> var start_time = '+start_time.toString()+' </script>';
     var bottom = fs.readFileSync(__dirname +"/public/task_bottom.html", 'utf8');
 
-    html = top + middle_img + middle_task + middle_assignment_id + middle_testim_fileid + middle_testim_index+ bottom;
+    html = top + middle_img + middle_task + middle_assignment_id + middle_testim_fileid + middle_testim_index+ middle_start_time + bottom;
     //console.log(middle_assignment_id);
 	res.send(html);
 });
@@ -237,10 +244,14 @@ app.post('/submit',function(req,res){
   var img_arr = req.body.imgs;
   var testim_fileid = req.body.testim_fileid;
   var testim_index = req.body.testim_index;
+  var start_time = req.body.start_time;
+  var end_time = Math.floor(Date.now() / 1000)
+  var total_time = end_time - start_time;
+
 
   filename = 'output/'+assignmentId+'_'+'task_'+task_num+'.json'
 
-   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad), "imgs": JSON.parse(img_arr), "testim_fileid": Number(testim_fileid), "testim_index": Number(testim_index)};
+   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad), "imgs": JSON.parse(img_arr), "testim_fileid": Number(testim_fileid), "testim_index": Number(testim_index), "total_time": Number(total_time)};
    var json_str= JSON.stringify(myjson);
    var fs = require('fs');
 	fs.writeFile(filename, json_str, function(err) {
