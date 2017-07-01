@@ -269,28 +269,41 @@ $(document).ready(function(){
       }
 
       test_canvas = canvas_tops[testim_index];
-      var inside_mask = check_test_im(test_canvas, imageonload_func);
+      var mask_indicators = check_test_im(test_canvas, imageonload_func);
+      var inside_goodmask1 = mask_indicators[0];
+      var inside_goodmask2 = mask_indicators[1];
+      var inside_badmask = mask_indicators[2];
 
       var coords = JSON.stringify(submit_dict); // change submit_dict to a string
-    if (!empty_field && inside_mask) { // only post the result if user clicked on all images
-      button_name = 'submit';
-      btn.disabled = false;
+    if (!empty_field && inside_goodmask1 && inside_goodmask2 && !inside_badmask) { // only post the result if user clicked on all images
         
       var which_imgs_bad = JSON.stringify(which_imgs_bad);
       var img_arr = JSON.stringify(imgs);
 
      var mydata = {coords: coords, comments: comments, task_num: task_num, assignmentId: assignmentId, which_imgs_bad: which_imgs_bad, imgs: img_arr, testim_fileid: testim_fileid, testim_index: testim_index};
      ajax_post('/submit', mydata);
+
+
     }
-    else if (!empty_field && !inside_mask) {
-      button_name = 'submit';
-      btn.disabled = true;
-      alert('You did not click on the correct contact points for a validation image.  Reminder: click on the object at all times, even if occluded.  See instructions');
-      //btn.disabled = false;
+    else if ((!empty_field && inside_goodmask1 && !inside_goodmask2) ||  (!empty_field && !inside_goodmask1 && inside_goodmask2)) {
+
+      alert('Validation Image Error: You have chosen some correct points, but you have also missed some correct points on a valdiation image.  Please review your selections.  See Instructions for more details');
     } 
+
+    else if (!empty_field && inside_goodmask1 && inside_goodmask2 && inside_badmask) {
+      alert('Validation Image Error: You have chosen all the correct points in a valdiation image, but have also chosen some commonly picked bad points.  Remember, always pick points on the object, and never on the human when the human is not in contact with the object.  See instructions.');
+    }
+
+    else if (!empty_field && inside_badmask && !inside_goodmask1 && !inside_goodmask2) {
+      alert('Validation Image Error: You have chosen some commonly picked bad points and have not picked any correct points in a validation image.  Remember, always pick points on the object, and never on the human when the human is not in contact with the object.  See instructions.');
+    }
+
     
     else { // alert user if he did not click on all images
       var empty_images = JSON.stringify(which_fields_empty);
+      button_name = 'submit';
+      var btn = document.getElementById(button_name);
+      console.log(btn.disabled);
       alert('Images '+empty_images+' were not clicked on.  Please choose keypoints for these images and resubmit');
     }
 
@@ -304,6 +317,12 @@ function turkSetAssignmentID(assignmentId) {
   button_name = 'submit';
   document.getElementById('assignmentId').value = assignmentId;
   btn = document.getElementById(button_name);
+
+
+  var test_canvas = canvas_tops[testim_index];
+  var mask_indicators = check_test_im(test_canvas, imageonload_func);
+  var test_im_wrong = !(mask_indicators[0] && mask_indicators[1] && !mask_indicators[2]);
+
 
   var empty_field= false;
   for (i=0; i <imgs.length; i++) {
@@ -329,6 +348,11 @@ function turkSetAssignmentID(assignmentId) {
   
   else if (empty_field) {
     btn.value = "Please choose a keypoint or check cannot complete for each image before submitting";
+    return false;
+  }
+
+  else if (test_im_wrong) {
+    btn.value = "Submit";
     return false;
   }
 
@@ -370,40 +394,72 @@ function check_test_im(test_im_canvas, callback) {
   var test_coords = test_im_canvas.coords;
   var test_im_name = imgs[testim_index];
 
-  var goodmask = test_im_name;
+  var goodmask1 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask.jpg';
+  var goodmask2 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask1.jpg';
+  var badmask = test_im_name.substring(0, test_im_name.length - 19) + '_badmask_final.jpg';
   //var goodmask = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask_final.jpg';
   //var badmask = test_im_name.substring(0, test_im_name.length - 4) + '_badmask_final.jpg';
 
-  image = new Image();
-  image.src = goodmask;
+  image_goodmask1 = new Image();
+  image_goodmask1.src = goodmask1;
+  var canvas_goodmask1 = document.createElement('canvas');
+  var context_goodmask1 = canvas_goodmask1.getContext('2d');
 
-  var canvas = document.createElement('canvas');
-  var context = canvas.getContext('2d');
+  image_goodmask2 = new Image();
+  image_goodmask2.src = goodmask2;
+  var canvas_goodmask2 = document.createElement('canvas');
+  var context_goodmask2 = canvas_goodmask2.getContext('2d');
+
+  image_goodmask2 = new Image();
+  image_goodmask2.src = goodmask2;
+  var canvas_goodmask2 = document.createElement('canvas');
+  var context_goodmask2 = canvas_goodmask2.getContext('2d');
+
+  image_badmask = new Image();
+  image_badmask.src = badmask;
+  var canvas_badmask = document.createElement('canvas');
+  var context_badmask = canvas_badmask.getContext('2d');
+
+  set_canv_size(canvas_goodmask1, image_goodmask1);
+  set_canv_size(canvas_goodmask2, image_goodmask2);
+  set_canv_size(canvas_badmask, image_badmask);
+
+
+inside_mask1 = callback(context_goodmask1, canvas_goodmask1, test_coords, image_goodmask1);
+inside_mask2 = callback(context_goodmask2, canvas_goodmask2, test_coords, image_goodmask2);
+inside_badmask = callback(context_badmask, canvas_badmask, test_coords, image_badmask);
+
+console.log(inside_mask1);
+console.log(inside_mask2);
+
+return ([inside_mask1, inside_mask2, inside_badmask]);
+}
+
+function set_canv_size(canvas, image) {
+
   canvas.width = csize;
   canvas.height = image.height * (csize/image.width);
 
-    if (canvas.height > maxheight) {
+  if (canvas.height > maxheight) {
       canvas.height = maxheight;
       canvas.width = image.width * (maxheight/image.height)
-    } 
-
-return callback(context, canvas, test_coords, image);
-
+  } 
 }
 
 
 function imageonload_func(context, canvas, test_coords, image) {
     context.drawImage(image, 0, 0, image.width, image.height, 0, 0, canvas.width, canvas.height);
 
-    var inside_mask = true;
+    var inside_mask = false;
 
     for (var i = 0; i < test_coords.length; i ++) {
     var pointx = test_coords[i][0];
     var pointy = test_coords[i][1];
     var theData = context.getImageData(pointx, pointy, 1, 1).data;
+    console.log(theData);
 
-      if (theData[0] == 0 && theData[1] == 0 && theData[2] == 0 ) {
-          inside_mask = false;
+      if (theData[0] != 0 && theData[1] != 0 && theData[2] != 0 ) {
+          inside_mask = true;
         }
 
       if (i == test_coords.length - 1) {return inside_mask;} 

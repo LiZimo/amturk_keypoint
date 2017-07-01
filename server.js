@@ -148,6 +148,7 @@ app.get('/imglists',function(req, res) {
 	var random_testim = Math.floor(Math.random() * testims.length);
 
 	imgs[rand_index] = '/images/test_ims/' + testims[random_testim].substring(0, testims[random_testim].length - 4) + '_goodmask_final.jpg';
+	//imgs[rand_index] = '/images/test_ims/' + testims[random_testim];
 	imgs[rand_index] = '\'' + imgs[rand_index] + '\'';
 	//console.log(imgs);
 
