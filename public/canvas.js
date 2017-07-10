@@ -366,7 +366,7 @@ function turkSetAssignmentID(assignmentId) {
   }
 
   else if (test_im_wrong) {
-    btn.value = "test_im_wrong";
+    btn.value = "Submit";
     return false;
   }
 
@@ -408,12 +408,15 @@ function check_test_im(test_im_canvas, callback, callback2) {
   var test_coords = test_im_canvas.coords;
   var test_im_name = imgs[testim_index];
 
-  var goodmask1 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask.jpg';
-  var goodmask2 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask1.jpg';
-  var goodmask_final = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask_final.jpg';
-  var badmask = test_im_name.substring(0, test_im_name.length - 19) + '_badmask_final.jpg';
-  //var goodmask = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask_final.jpg';
-  //var badmask = test_im_name.substring(0, test_im_name.length - 4) + '_badmask_final.jpg';
+  // var goodmask1 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask.jpg';
+  // var goodmask2 = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask1.jpg';
+  // var goodmask_final = test_im_name.substring(0, test_im_name.length - 19) + '_goodmask_final.jpg';
+  // var badmask = test_im_name.substring(0, test_im_name.length - 19) + '_badmask_final.jpg';
+  
+  var goodmask1 = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask.jpg';
+  var goodmask2 = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask1.jpg';
+  var goodmask_final = test_im_name.substring(0, test_im_name.length - 4) + '_goodmask_final.jpg';
+  var badmask = test_im_name.substring(0, test_im_name.length - 4) + '_badmask_final.jpg';
 
   image_goodmask1 = new Image();
   image_goodmask1.src = goodmask1;
