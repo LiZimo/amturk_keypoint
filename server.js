@@ -96,6 +96,8 @@ var silent = true; // if this is false, then the server will log each request on
 
 app.get('/begin',function(req, res) {
 
+  console.log("Server Accessed");
+
 	var assignmentId = req.query.assignmentId;
 
 	var task_num = req.query.task_num;
