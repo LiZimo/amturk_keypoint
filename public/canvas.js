@@ -315,8 +315,12 @@ $(document).ready(function(){
       alert('Validation Image Error: You have chosen some commonly picked bad points and some extraneous points.  Please choose only and all the valid points.  See instructions.')
     }
 
-    
-    else { // alert user if he did !ot click on all images
+    else if (inside_goodmask1 == undefined) {
+      alert('Validation Image Error: You have chosen the \'Cannot Complete\' option for a validation image for which the keypoints are visible.  Please complete all do-able images.')
+    }
+
+
+    else if (empty_field) { // alert user if he did !ot click on all images
       var empty_images = JSON.stringify(which_fields_empty);
       alert('Images '+empty_images+' were not clicked on.  Please choose keypoints for these images and resubmit');
     }
@@ -336,6 +340,10 @@ function turkSetAssignmentID(assignmentId) {
   var test_canvas = canvas_tops[testim_index];
   var mask_indicators = check_test_im(test_canvas, imageonload_func, imageonload_func2);
   var test_im_wrong = (!mask_indicators[0] || !mask_indicators[1] || mask_indicators[3]);
+  //console.log(mask_indicators[0] == undefined);
+  //console.log(mask_indicators);
+  //console.log(test_im_wrong);
+  //console.log(!mask_indicators[0] || !mask_indicators[1]);
 
 
   var empty_field= false;
