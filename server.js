@@ -253,7 +253,7 @@ app.post('/submit',function(req,res){
 
   filename = 'output/'+assignmentId+'_'+'task_'+task_num+'.json'
 
-   var myjson = {"task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad), "imgs": JSON.parse(img_arr), "testim_fileid": Number(testim_fileid), "testim_index": Number(testim_index), "total_time": Number(total_time)};
+   var myjson = {"assignmentId": assignmentId, "task_num": Number(task_num), "coords": coord_array, "comments": comments, "bad_imgs": JSON.parse(which_imgs_bad), "imgs": JSON.parse(img_arr), "testim_fileid": Number(testim_fileid), "testim_index": Number(testim_index), "total_time": Number(total_time)};
    var json_str= JSON.stringify(myjson);
    var fs = require('fs');
 	fs.writeFile(filename, json_str, function(err) {
