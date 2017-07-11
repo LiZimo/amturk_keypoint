@@ -411,6 +411,18 @@ function clear_points(canvas) {
 
 }
 
+function please_be_sure(canvas) {
+    if (confirm('Are you sure this image cannot be marked?  Please only choose this option the contact points are impossible to click, for example, out of frame.  Do not choose this option if points are simply occluded, but you can still infer where they are.')) {
+    clear_points(canvas);
+} else {
+    parent_div = canvas.parentNode;
+    checkbox = parent_div.getElementsByClassName('part check_box')[0];
+    checkbox.checked = false;
+
+
+}
+}
+
 function check_test_im(test_im_canvas, callback, callback2) {
 
   var test_coords = test_im_canvas.coords;
