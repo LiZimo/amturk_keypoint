@@ -95,8 +95,8 @@ var silent = true; // if this is false, then the server will log each request on
 
 
 app.get('/begin',function(req, res) {
-
-  console.log("Server Accessed");
+  
+  console.log("Server Accessed by assignmentdId:" + req.query.assignmentId);
 
 	var assignmentId = req.query.assignmentId;
 
@@ -147,7 +147,7 @@ app.get('/imglists',function(req, res) {
 
 	// get test files
 
-	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/testlist.txt", 'utf8');
+	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/feet/testlist.txt", 'utf8');
 	var testims = test_files.split('\r\n');
 	// get random index for putting a test image
 	var rand_index = Math.floor(Math.random() * imgs.length);
