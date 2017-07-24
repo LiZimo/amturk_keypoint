@@ -1,0 +1,8 @@
+feet/HICO_train2015_00000060.jpg
+feet/HICO_train2015_00011864.jpg
+feet/HICO_train2015_00017000.jpg
+feet/HICO_train2015_00011870.jpg
+feet/HICO_train2015_00003882.jpg
+feet/HICO_train2015_00011878.jpg
+feet/HICO_train2015_00011232.jpg
+feet/HICO_train2015_00011889.jpg
