@@ -1,0 +1,12 @@
+motorbikes_cropped/HICO_train2015_00001982.jpg
+motorbikes_cropped/HICO_train2015_00002016.jpg
+motorbikes_cropped/HICO_train2015_00002036.jpg
+motorbikes_cropped/HICO_train2015_00002074.jpg
+motorbikes_cropped/HICO_train2015_00002121.jpg
+motorbikes_cropped/HICO_train2015_00002156.jpg
+motorbikes_cropped/HICO_train2015_00002185.jpg
+motorbikes_cropped/HICO_train2015_00002192.jpg
+motorbikes_cropped/HICO_train2015_00002234.jpg
+motorbikes_cropped/HICO_train2015_00002264.jpg
+motorbikes_cropped/HICO_train2015_00002265.jpg
+motorbikes_cropped/HICO_train2015_00002287.jpg

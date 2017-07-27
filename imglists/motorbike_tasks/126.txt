@@ -1,0 +1,3 @@
+motorbikes_cropped/HICO_train2015_00036927.jpg
+motorbikes_cropped/HICO_train2015_00036928.jpg
+motorbikes_cropped/HICO_train2015_00036929.jpg
