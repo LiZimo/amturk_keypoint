@@ -1,0 +1,8 @@
+motorbike_hands/HICO_train2015_00000185.jpg
+motorbike_hands/HICO_train2015_00002578.jpg
+motorbike_hands/HICO_train2015_00006456.jpg
+motorbike_hands/HICO_train2015_00000382.jpg
+motorbike_hands/HICO_train2015_00002766.jpg
+motorbike_hands/HICO_train2015_00011111.jpg
+motorbike_hands/HICO_train2015_00000985.jpg
+motorbike_hands/HICO_train2015_00002975.jpg
