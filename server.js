@@ -148,7 +148,7 @@ app.get('/imglists',function(req, res) {
 
 	// get test files
 
-	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/motorbike_hands/testlist.txt", 'utf8');
+	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/motorbike_feet/testlist.txt", 'utf8');
 	var testims = test_files.split('\r\n');
 	// get random index for putting a test image
 	var rand_index = Math.floor(Math.random() * imgs.length);
