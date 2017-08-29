@@ -1,0 +1,12 @@
+snowboard_cropped/HICO_train2015_00023477.jpg
+snowboard_cropped/HICO_train2015_00023491.jpg
+snowboard_cropped/HICO_train2015_00023522.jpg
+snowboard_cropped/HICO_train2015_00023581.jpg
+snowboard_cropped/HICO_train2015_00023610.jpg
+snowboard_cropped/HICO_train2015_00023640.jpg
+snowboard_cropped/HICO_train2015_00023663.jpg
+snowboard_cropped/HICO_train2015_00023682.jpg
+snowboard_cropped/HICO_train2015_00023726.jpg
+snowboard_cropped/HICO_train2015_00023741.jpg
+snowboard_cropped/HICO_train2015_00023743.jpg
+snowboard_cropped/HICO_train2015_00023867.jpg
