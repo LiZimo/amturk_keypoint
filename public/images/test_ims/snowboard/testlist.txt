@@ -1,0 +1,8 @@
+snowboard/HICO_train2015_00022630.jpg
+snowboard/HICO_train2015_00028972.jpg
+snowboard/HICO_train2015_00009441.jpg
+snowboard/HICO_train2015_00034106.jpg
+snowboard/HICO_train2015_00010560.jpg
+snowboard/HICO_train2015_00037795.jpg
+snowboard/HICO_train2015_00010738.jpg
+snowboard/HICO_train2015_00015426.jpg

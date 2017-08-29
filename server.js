@@ -127,7 +127,7 @@ app.get('/begin',function(req, res) {
 // with the task index to the actual task page.
 //========================================================
 app.get('/imglists',function(req, res) {
-  task_name = "motorbike_tasks/";
+  task_name = "snowboard_tasks/";
 
 
 	myurl = (req.originalUrl);
@@ -148,7 +148,7 @@ app.get('/imglists',function(req, res) {
 
 	// get test files
 
-	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/motorbike_feet/testlist.txt", 'utf8');
+	var test_files = fs.readFileSync(__dirname + "/public/images/test_ims/snowboard/testlist.txt", 'utf8');
 	var testims = test_files.split('\r\n');
 	// get random index for putting a test image
 	var rand_index = Math.floor(Math.random() * imgs.length);
