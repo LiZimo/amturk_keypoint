@@ -1,0 +1,12 @@
+skateboard_cropped/HICO_train2015_00004232.jpg
+skateboard_cropped/HICO_train2015_00004267.jpg
+skateboard_cropped/HICO_train2015_00004272.jpg
+skateboard_cropped/HICO_train2015_00004297.jpg
+skateboard_cropped/HICO_train2015_00004304.jpg
+skateboard_cropped/HICO_train2015_00004321.jpg
+skateboard_cropped/HICO_train2015_00004334.jpg
+skateboard_cropped/HICO_train2015_00004373.jpg
+skateboard_cropped/HICO_train2015_00004374.jpg
+skateboard_cropped/HICO_train2015_00004381.jpg
+skateboard_cropped/HICO_train2015_00004410.jpg
+skateboard_cropped/HICO_train2015_00004416.jpg
