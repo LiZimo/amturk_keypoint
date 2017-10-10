@@ -1,0 +1,7 @@
+skateboard/HICO_train2015_00015834.jpg
+skateboard/HICO_train2015_00017330.jpg
+skateboard/HICO_train2015_00000067.jpg
+skateboard/HICO_train2015_00017946.jpg
+skateboard/HICO_train2015_00000134.jpg
+skateboard/HICO_train2015_00000580.jpg
+skateboard/HICO_train2015_00001980.jpg
