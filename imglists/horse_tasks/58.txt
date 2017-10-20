@@ -1,0 +1,12 @@
+horse_cropped/HICO_train2015_00020506.jpg
+horse_cropped/HICO_train2015_00020509.jpg
+horse_cropped/HICO_train2015_00020552.jpg
+horse_cropped/HICO_train2015_00020562.jpg
+horse_cropped/HICO_train2015_00020582.jpg
+horse_cropped/HICO_train2015_00020593.jpg
+horse_cropped/HICO_train2015_00020598.jpg
+horse_cropped/HICO_train2015_00020612.jpg
+horse_cropped/HICO_train2015_00020640.jpg
+horse_cropped/HICO_train2015_00020693.jpg
+horse_cropped/HICO_train2015_00020716.jpg
+horse_cropped/HICO_train2015_00020724.jpg

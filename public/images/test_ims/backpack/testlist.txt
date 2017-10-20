@@ -1,0 +1,7 @@
+backpack/HICO_train2015_00020252.jpg
+backpack/HICO_train2015_00025073.jpg
+backpack/HICO_train2015_00000117.jpg
+backpack/HICO_train2015_00037096.jpg
+backpack/HICO_train2015_00002831.jpg
+backpack/HICO_train2015_00007747.jpg
+backpack/HICO_train2015_00017300.jpg
