@@ -1,0 +1,2 @@
+umbrella_cropped/HICO_train2015_00038110.jpg
+umbrella_cropped/HICO_train2015_00038111.jpg

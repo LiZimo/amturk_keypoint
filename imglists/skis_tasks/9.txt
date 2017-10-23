@@ -1,0 +1,12 @@
+skis_cropped/HICO_train2015_00006876.jpg
+skis_cropped/HICO_train2015_00006995.jpg
+skis_cropped/HICO_train2015_00007032.jpg
+skis_cropped/HICO_train2015_00007129.jpg
+skis_cropped/HICO_train2015_00007140.jpg
+skis_cropped/HICO_train2015_00007248.jpg
+skis_cropped/HICO_train2015_00007277.jpg
+skis_cropped/HICO_train2015_00007290.jpg
+skis_cropped/HICO_train2015_00007314.jpg
+skis_cropped/HICO_train2015_00007466.jpg
+skis_cropped/HICO_train2015_00007487.jpg
+skis_cropped/HICO_train2015_00007738.jpg

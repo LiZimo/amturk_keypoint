@@ -1,0 +1,7 @@
+skis/HICO_train2015_00021046.jpg
+skis/HICO_train2015_00024036.jpg
+skis/HICO_train2015_00010575.jpg
+skis/HICO_train2015_00030594.jpg
+skis/HICO_train2015_00014495.jpg
+skis/HICO_train2015_00015076.jpg
+skis/HICO_train2015_00017139.jpg

@@ -1,0 +1,12 @@
+umbrella_cropped/HICO_train2015_00000006.jpg
+umbrella_cropped/HICO_train2015_00000012.jpg
+umbrella_cropped/HICO_train2015_00000036.jpg
+umbrella_cropped/HICO_train2015_00000041.jpg
+umbrella_cropped/HICO_train2015_00000064.jpg
+umbrella_cropped/HICO_train2015_00000088.jpg
+umbrella_cropped/HICO_train2015_00000129.jpg
+umbrella_cropped/HICO_train2015_00000148.jpg
+umbrella_cropped/HICO_train2015_00000176.jpg
+umbrella_cropped/HICO_train2015_00000214.jpg
+umbrella_cropped/HICO_train2015_00000243.jpg
+umbrella_cropped/HICO_train2015_00000263.jpg

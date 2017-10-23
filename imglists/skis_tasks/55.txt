@@ -1,0 +1,3 @@
+skis_cropped/HICO_train2015_00037792.jpg
+skis_cropped/HICO_train2015_00037793.jpg
+skis_cropped/HICO_train2015_00037794.jpg
