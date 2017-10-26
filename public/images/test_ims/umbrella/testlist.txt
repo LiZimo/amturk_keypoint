@@ -1,0 +1,7 @@
+umbrella/HICO_train2015_00022303.jpg
+umbrella/HICO_train2015_00023027.jpg
+umbrella/HICO_train2015_00008001.jpg
+umbrella/HICO_train2015_00028334.jpg
+umbrella/HICO_train2015_00008233.jpg
+umbrella/HICO_train2015_00010506.jpg
+umbrella/HICO_train2015_00017741.jpg

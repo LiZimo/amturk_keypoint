@@ -1,0 +1,2 @@
+tennis_racket_cropped/HICO_train2015_00035861.jpg
+tennis_racket_cropped/HICO_train2015_00035889.jpg
