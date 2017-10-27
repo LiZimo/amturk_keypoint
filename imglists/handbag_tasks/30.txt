@@ -1,0 +1,12 @@
+handbag_cropped/HICO_train2015_00032459.jpg
+handbag_cropped/HICO_train2015_00032639.jpg
+handbag_cropped/HICO_train2015_00032709.jpg
+handbag_cropped/HICO_train2015_00032736.jpg
+handbag_cropped/HICO_train2015_00032794.jpg
+handbag_cropped/HICO_train2015_00032890.jpg
+handbag_cropped/HICO_train2015_00032908.jpg
+handbag_cropped/HICO_train2015_00032919.jpg
+handbag_cropped/HICO_train2015_00032950.jpg
+handbag_cropped/HICO_train2015_00032971.jpg
+handbag_cropped/HICO_train2015_00033079.jpg
+handbag_cropped/HICO_train2015_00033159.jpg
