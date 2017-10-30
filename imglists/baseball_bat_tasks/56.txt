@@ -1,0 +1,7 @@
+baseball_bat_cropped/HICO_train2015_00037145.jpg
+baseball_bat_cropped/HICO_train2015_00037146.jpg
+baseball_bat_cropped/HICO_train2015_00037147.jpg
+baseball_bat_cropped/HICO_train2015_00037148.jpg
+baseball_bat_cropped/HICO_train2015_00037149.jpg
+baseball_bat_cropped/HICO_train2015_00037150.jpg
+baseball_bat_cropped/HICO_train2015_00038127.jpg

@@ -1,0 +1,9 @@
+refrigerator_cropped/HICO_train2015_00030623.jpg
+refrigerator_cropped/HICO_train2015_00031334.jpg
+refrigerator_cropped/HICO_train2015_00032063.jpg
+refrigerator_cropped/HICO_train2015_00033314.jpg
+refrigerator_cropped/HICO_train2015_00033360.jpg
+refrigerator_cropped/HICO_train2015_00033852.jpg
+refrigerator_cropped/HICO_train2015_00034102.jpg
+refrigerator_cropped/HICO_train2015_00034444.jpg
+refrigerator_cropped/HICO_train2015_00034961.jpg
